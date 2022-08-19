@@ -14,6 +14,8 @@ jobs:
       run:
         shell: bash
     steps:
+      - name: prep environemnt
+        run: mkdir -p output
       - name: full set output
         run: set > output/set.txt
       - name: env environment info
