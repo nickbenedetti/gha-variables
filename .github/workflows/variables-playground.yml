@@ -5,8 +5,7 @@
 name: Learn about variables
 on: push
 env:
-  REPO_LONG: $GITHUB_REPOSITORY
-  REPO_SHORT: ${GITHUB_REPOSITORY#*/}
+  REPO_NAME_INCL_OWNER: ${{ github.repository }}
 jobs:
   step_playground:
     runs-on: ubuntu-latest
@@ -14,7 +13,7 @@ jobs:
       run:
         shell: bash
     steps:
-      - name: prep environemnt
+      - name: prep environment
         run: mkdir -p output
       - name: full set output
         run: |
@@ -27,6 +26,8 @@ jobs:
       - name: print workflow env variables
         run: |
           echo ${{ github.repository }}
+          echo "$REPO_NAME_INCL_OWNER"
+          echo ${{ env.REPO_NAME_INCL_OWNER }}
           # echo "${ ${{ github.repository }} #*/}"
           echo "$GITHUB_REPOSITORY"
           echo "${GITHUB_REPOSITORY#*/}"
