@@ -18,3 +18,7 @@ jobs:
         run: set
       - name: env environment info
         run: env
+      - name: print workflow env variables
+        run: |
+          echo "$REPO_LONG"
+          echo "$REPO_SHORT"
