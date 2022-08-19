@@ -15,10 +15,19 @@ jobs:
         shell: bash
     steps:
       - name: full set output
-        run: set
+        run: set > output/set.txt
       - name: env environment info
-        run: env
+        run: env > output/env.txt
       - name: print workflow env variables
         run: |
-          echo "$REPO_LONG"
-          echo "$REPO_SHORT"
+          echo ${{ github.repository }}
+          echo "${ ${{ github.repository }} #*/}"
+          echo "$GITHUB_REPOSITORY"
+          echo "${GITHUB_REPOSITORY#*/}"
+      - name: archive output
+        if: always()
+        run: tar czf ./archive.tar.gz /output
+      - uses: actions/upload-artifact@v3
+        with:
+          name: archive
+          path: archive.tar.gz
