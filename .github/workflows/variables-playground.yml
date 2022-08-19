@@ -17,18 +17,22 @@ jobs:
       - name: prep environemnt
         run: mkdir -p output
       - name: full set output
-        run: set > output/set.txt
+        run: |
+          set
+          set > output/set.txt
       - name: env environment info
-        run: env > output/env.txt
+        run: |
+          env
+          env > output/env.txt
       - name: print workflow env variables
         run: |
           echo ${{ github.repository }}
-          echo "${ ${{ github.repository }} #*/}"
+          # echo "${ ${{ github.repository }} #*/}"
           echo "$GITHUB_REPOSITORY"
           echo "${GITHUB_REPOSITORY#*/}"
       - name: archive output
         if: always()
-        run: tar czf ./archive.tar.gz /output
+        run: tar czf ./archive.tar.gz output
       - uses: actions/upload-artifact@v3
         with:
           name: archive
