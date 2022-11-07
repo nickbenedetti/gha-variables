@@ -24,6 +24,7 @@ jobs:
           echo "NO:\"$GHA_COMMIT_SHA_NO\""
           echo "SINGLE:\"$GHA_COMMIT_SHA_DOUBLE\""
           echo "DOUBLE:\"$GHA_COMMIT_SHA_SINGLE\""
+          ./.github/workflows/bash-expressions.sh 
       - name: full set output
         run: |
           set
