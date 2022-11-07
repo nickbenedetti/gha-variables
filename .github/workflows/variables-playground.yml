@@ -26,6 +26,7 @@ jobs:
           echo "SINGLE:\"$GHA_COMMIT_SHA_DOUBLE\""
           echo "DOUBLE:\"$GHA_COMMIT_SHA_SINGLE\""
           ./.github/workflows/bash-expressions.sh
+          # Test out env vars https://docs.github.com/en/actions/learn-github-actions/environment-variables
         env:
           GITHUB_REF_ENV: ${{ github.ref }} 
       - name: full set output

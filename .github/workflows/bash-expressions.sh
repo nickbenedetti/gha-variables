@@ -1,5 +1,6 @@
 #!/bin/bash
 GHA_COMMIT_SHA_NO=${{ github.sha }}
+# ./.github/workflows/bash-expressions.sh: line 2: ${{ github.sha }}: bad substitution
 GHA_COMMIT_SHA_SINGLE='${{ github.sha }}'
 GHA_COMMIT_SHA_DOUBLE="${{ github.sha }}"
 echo "NO:\"$GHA_COMMIT_SHA_NO\""
