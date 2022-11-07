@@ -25,7 +25,9 @@ jobs:
           echo "NO:\"$GHA_COMMIT_SHA_NO\""
           echo "SINGLE:\"$GHA_COMMIT_SHA_DOUBLE\""
           echo "DOUBLE:\"$GHA_COMMIT_SHA_SINGLE\""
-          ./.github/workflows/bash-expressions.sh 
+          ./.github/workflows/bash-expressions.sh
+        env:
+          GITHUB_REF_ENV: ${{ github.ref }} 
       - name: full set output
         run: |
           set
