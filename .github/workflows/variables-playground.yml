@@ -8,6 +8,7 @@ env:
   REPO_NAME_INCL_OWNER: ${{ github.repository }}
 jobs:
   step_playground:
+    timeout-minutes: 5
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -15,6 +16,14 @@ jobs:
     steps:
       - name: prep environment
         run: mkdir -p output
+      - name: test expressions
+        run: |
+          GHA_COMMIT_SHA_NO=${{ github.sha }}
+          GHA_COMMIT_SHA_DOUBLE="${{ github.sha }}"
+          GHA_COMMIT_SHA_SINGLE='${{ github.sha }}'
+          echo "NO:\"$GHA_COMMIT_SHA_NO\""
+          echo "SINGLE:\"$GHA_COMMIT_SHA_DOUBLE\""
+          echo "DOUBLE:\"$GHA_COMMIT_SHA_SINGLE\""
       - name: full set output
         run: |
           set
